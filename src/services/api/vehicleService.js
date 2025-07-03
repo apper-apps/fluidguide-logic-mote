@@ -13,9 +13,9 @@ class VehicleService {
       return;
     }
     
-    if (!window.ApperSDK) {
-      console.error('ApperSDK not found. Make sure the Apper SDK script is loaded.');
-      toast.error('Service configuration error. Please contact support.');
+if (!window.ApperSDK) {
+      console.error('ApperSDK not found. The Apper SDK script may not have loaded yet or failed to load.');
+      toast.error('Service initialization failed. Please refresh the page or contact support.');
       return;
     }
     
@@ -28,16 +28,17 @@ class VehicleService {
       return;
     }
     
-    try {
+try {
       const { ApperClient } = window.ApperSDK;
       this.apperClient = new ApperClient({
         apperProjectId: projectId,
         apperPublicKey: publicKey
       });
-      console.log('ApperClient initialized successfully');
+      console.log('ApperClient initialized successfully for vehicle service');
     } catch (error) {
       console.error('Failed to initialize ApperClient:', error);
-      toast.error('Failed to initialize service connection.');
+      toast.error('Network connection failed. Please check your internet connection and try again.');
+      throw error;
     }
   }
 
