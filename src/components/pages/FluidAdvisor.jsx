@@ -9,6 +9,7 @@ import vehicleData from "@/services/mockData/vehicles.json";
 import fluidData from "@/services/mockData/fluids.json";
 import { fluidService } from "@/services/api/fluidService";
 import { vehicleService } from "@/services/api/vehicleService";
+
 const FluidAdvisor = () => {
   const [selectedVehicle, setSelectedVehicle] = useState(null);
   const [fluids, setFluids] = useState([]);
@@ -54,7 +55,7 @@ vehicleService.addRecentVehicle(vehicle);
   const loadFluids = async (vehicle) => {
     setLoading(true);
     try {
-      const vehicleData = await vehicleService.getBySpecs(
+const vehicleData = await vehicleService.getBySpecs(
         vehicle.brand, 
         vehicle.model, 
         vehicle.year, 
@@ -62,8 +63,8 @@ vehicleService.addRecentVehicle(vehicle);
       );
       
       if (vehicleData) {
-        const fluidData = await fluidService.getByVehicleId(vehicleData.Id);
-        setFluids(fluidData);
+const fluidData = await fluidService.getByVehicleId(vehicleData.Id);
+        setFluids(fluidData || []);
       }
     } catch (error) {
       toast.error('Failed to load fluid data');

@@ -1,79 +1,125 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import ApperIcon from '@/components/ApperIcon';
+import React, { useContext, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { useSelector } from "react-redux";
+import { AuthContext } from "@/App";
+import ApperIcon from "@/components/ApperIcon";
 
 const Header = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { logout } = useContext(AuthContext);
+  const { user, isAuthenticated } = useSelector((state) => state.user);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleLogout = async () => {
+    await logout();
+  };
 
   return (
-    <header className="bg-white shadow-xl border-b border-gray-200 sticky top-0 z-50 backdrop-blur-sm bg-white/95">
+    <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <Link to="/" className="flex items-center space-x-3">
-            <motion.div 
-              className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-xl flex items-center justify-center shadow-lg"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <ApperIcon name="Droplets" className="w-6 h-6 text-white" />
-            </motion.div>
-            <div>
-              <h1 className="text-2xl font-display font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+          {/* Logo */}
+          <div className="flex items-center space-x-3">
+            <div className="w-8 h-8 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center">
+              <ApperIcon name="Droplets" className="w-5 h-5 text-white" />
+            </div>
+            <div className="hidden sm:block">
+              <h1 className="text-xl font-display font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 FluidGuide Pro
               </h1>
-              <p className="text-xs text-secondary hidden sm:block">Vehicle Fluid Advisor</p>
-            </div>
-          </Link>
-
-          <div className="hidden lg:flex items-center space-x-6">
-            <Link to="/" className="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">
-              Home
-            </Link>
-            <Link to="/search" className="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">
-              Search
-            </Link>
-            <div className="flex items-center space-x-2 text-secondary">
-              <ApperIcon name="Users" className="w-4 h-4" />
-              <span className="text-sm">No Registration Required</span>
             </div>
           </div>
 
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
-          >
-            <ApperIcon name={isMobileMenuOpen ? "X" : "Menu"} className="w-6 h-6 text-gray-700" />
-          </button>
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-8">
+            <a href="/" className="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">
+              Home
+            </a>
+            <a href="/search" className="text-gray-700 hover:text-primary transition-colors duration-200 font-medium">
+              Search
+            </a>
+            {isAuthenticated ? (
+              <div className="flex items-center space-x-4">
+                <span className="text-sm text-gray-600">
+                  Welcome, {user?.firstName || user?.emailAddress || 'User'}
+                </span>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={handleLogout}
+                  className="bg-gradient-to-r from-gray-600 to-gray-700 text-white px-4 py-2 rounded-lg font-medium shadow-lg hover:shadow-xl transition-shadow duration-200"
+                >
+                  Logout
+                </motion.button>
+              </div>
+            ) : (
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-gradient-to-r from-primary to-accent text-white px-4 py-2 rounded-lg font-medium shadow-lg hover:shadow-xl transition-shadow duration-200"
+              >
+                Get Started
+              </motion.button>
+            )}
+          </nav>
+
+          {/* Mobile menu button */}
+          <div className="md:hidden">
+            <motion.button
+              whileTap={{ scale: 0.95 }}
+              onClick={toggleMenu}
+              className="text-gray-700 hover:text-primary transition-colors duration-200"
+            >
+              <ApperIcon name={isMenuOpen ? "X" : "Menu"} className="w-6 h-6" />
+            </motion.button>
+          </div>
         </div>
-      </div>
 
-      {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <motion.div 
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: 'auto' }}
-          exit={{ opacity: 0, height: 0 }}
-          className="lg:hidden bg-white border-t border-gray-200"
-        >
-          <div className="px-4 py-3 space-y-2">
-            <Link 
-              to="/" 
-              className="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors duration-200"
-              onClick={() => setIsMobileMenuOpen(false)}
+        {/* Mobile Navigation */}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden border-t border-gray-200 py-4 space-y-4"
             >
-              Home
-            </Link>
-            <Link 
-              to="/search" 
-              className="block px-3 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors duration-200"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              Search
-            </Link>
-          </div>
-        </motion.div>
-      )}
+              <a href="/" className="block text-gray-700 hover:text-primary transition-colors duration-200 font-medium">
+                Home
+              </a>
+              <a href="/search" className="block text-gray-700 hover:text-primary transition-colors duration-200 font-medium">
+                Search
+              </a>
+              {isAuthenticated ? (
+                <div className="space-y-3">
+                  <div className="text-sm text-gray-600">
+                    Welcome, {user?.firstName || user?.emailAddress || 'User'}
+                  </div>
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={handleLogout}
+                    className="w-full bg-gradient-to-r from-gray-600 to-gray-700 text-white px-4 py-2 rounded-lg font-medium shadow-lg hover:shadow-xl transition-shadow duration-200"
+                  >
+                    Logout
+                  </motion.button>
+                </div>
+              ) : (
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full bg-gradient-to-r from-primary to-accent text-white px-4 py-2 rounded-lg font-medium shadow-lg hover:shadow-xl transition-shadow duration-200"
+                >
+                  Get Started
+                </motion.button>
+              )}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </header>
   );
 };

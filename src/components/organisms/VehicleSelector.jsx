@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { toast } from 'react-toastify';
 import DropdownField from '@/components/molecules/DropdownField';
 import { vehicleService } from '@/services/api/vehicleService';
 
@@ -43,8 +44,8 @@ const VehicleSelector = ({ onVehicleSelect, selectedVehicle }) => {
   const loadBrands = async () => {
     setLoading(true);
     try {
-      const brandsData = await vehicleService.getBrands();
-      setBrands(brandsData);
+const brandsData = await vehicleService.getBrands();
+      setBrands(brandsData || []);
     } catch (error) {
       console.error('Error loading brands:', error);
     } finally {
@@ -55,8 +56,8 @@ const VehicleSelector = ({ onVehicleSelect, selectedVehicle }) => {
   const loadModels = async (brand) => {
     if (!brand) return;
     try {
-      const modelsData = await vehicleService.getModels(brand);
-      setModels(modelsData);
+const modelsData = await vehicleService.getModels(brand);
+      setModels(modelsData || []);
     } catch (error) {
       console.error('Error loading models:', error);
     }
@@ -65,8 +66,8 @@ const VehicleSelector = ({ onVehicleSelect, selectedVehicle }) => {
   const loadYears = async (brand, model) => {
     if (!brand || !model) return;
     try {
-      const yearsData = await vehicleService.getYears(brand, model);
-      setYears(yearsData);
+const yearsData = await vehicleService.getYears(brand, model);
+      setYears(yearsData || []);
     } catch (error) {
       console.error('Error loading years:', error);
     }
@@ -75,8 +76,8 @@ const VehicleSelector = ({ onVehicleSelect, selectedVehicle }) => {
   const loadEngineTypes = async (brand, model, year) => {
     if (!brand || !model || !year) return;
     try {
-      const engineTypesData = await vehicleService.getEngineTypes(brand, model, year);
-      setEngineTypes(engineTypesData);
+const engineTypesData = await vehicleService.getEngineTypes(brand, model, year);
+      setEngineTypes(engineTypesData || []);
     } catch (error) {
       console.error('Error loading engine types:', error);
     }
