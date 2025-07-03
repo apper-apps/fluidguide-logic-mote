@@ -3,22 +3,49 @@ import { toast } from 'react-toastify';
 class VehicleService {
   constructor() {
     this.apperClient = null;
-    this.initializeClient();
   }
 
   initializeClient() {
-    if (typeof window !== 'undefined' && window.ApperSDK) {
+    if (typeof window === 'undefined') {
+      console.error('ApperClient can only be initialized in browser environment');
+      return;
+    }
+    
+    if (!window.ApperSDK) {
+      console.error('ApperSDK not found. Make sure the Apper SDK script is loaded.');
+      toast.error('Service configuration error. Please contact support.');
+      return;
+    }
+    
+    const projectId = import.meta.env.VITE_APPER_PROJECT_ID;
+    const publicKey = import.meta.env.VITE_APPER_PUBLIC_KEY;
+    
+    if (!projectId || !publicKey) {
+      console.error('Missing required environment variables: VITE_APPER_PROJECT_ID and/or VITE_APPER_PUBLIC_KEY');
+      toast.error('Service configuration missing. Please contact support.');
+      return;
+    }
+    
+    try {
       const { ApperClient } = window.ApperSDK;
       this.apperClient = new ApperClient({
-        apperProjectId: import.meta.env.VITE_APPER_PROJECT_ID,
-        apperPublicKey: import.meta.env.VITE_APPER_PUBLIC_KEY
+        apperProjectId: projectId,
+        apperPublicKey: publicKey
       });
+      console.log('ApperClient initialized successfully');
+    } catch (error) {
+      console.error('Failed to initialize ApperClient:', error);
+      toast.error('Failed to initialize service connection.');
     }
   }
 
   async getBrands() {
     try {
       if (!this.apperClient) this.initializeClient();
+      
+      if (!this.apperClient) {
+        throw new Error('Failed to initialize ApperClient');
+      }
       
       const params = {
         fields: [
@@ -50,6 +77,10 @@ class VehicleService {
   async getModels(brand) {
     try {
       if (!this.apperClient) this.initializeClient();
+      
+      if (!this.apperClient) {
+        throw new Error('Failed to initialize ApperClient');
+      }
       
       const params = {
         fields: [
@@ -84,6 +115,10 @@ class VehicleService {
   async getYears(brand, model) {
     try {
       if (!this.apperClient) this.initializeClient();
+      
+      if (!this.apperClient) {
+        throw new Error('Failed to initialize ApperClient');
+      }
       
       const params = {
         fields: [
@@ -120,6 +155,10 @@ class VehicleService {
     try {
       if (!this.apperClient) this.initializeClient();
       
+      if (!this.apperClient) {
+        throw new Error('Failed to initialize ApperClient');
+      }
+      
       const params = {
         fields: [
           { field: { Name: "engine_type" } }
@@ -155,6 +194,10 @@ class VehicleService {
   async getBySpecs(brand, model, year, engineType) {
     try {
       if (!this.apperClient) this.initializeClient();
+      
+      if (!this.apperClient) {
+        throw new Error('Failed to initialize ApperClient');
+      }
       
       const params = {
         fields: [
@@ -193,6 +236,10 @@ class VehicleService {
     try {
       if (!this.apperClient) this.initializeClient();
       
+      if (!this.apperClient) {
+        throw new Error('Failed to initialize ApperClient');
+      }
+      
       const params = {
         fields: [
           { field: { Name: "Name" } },
@@ -220,35 +267,37 @@ class VehicleService {
     }
   }
 
-  // Recent vehicles management (preserved as localStorage for UI state)
+  // Local storage methods for recent vehicles
   getRecentVehicles() {
-    const recent = localStorage.getItem('recentVehicles');
-    return recent ? JSON.parse(recent) : [];
+    try {
+      const stored = localStorage.getItem('recentVehicles');
+      return stored ? JSON.parse(stored) : [];
+    } catch {
+      return [];
+    }
   }
 
   addRecentVehicle(vehicle) {
-    let recent = this.getRecentVehicles();
-    
-    // Remove if already exists
-    recent = recent.filter(v => 
-      !(v.brand === vehicle.brand && 
-        v.model === vehicle.model && 
-        v.year === vehicle.year && 
-        v.engineType === vehicle.engineType)
-    );
-    
-    // Add to beginning
-    recent.unshift(vehicle);
-    
-    // Keep only last 5
-    recent = recent.slice(0, 5);
-    
-    localStorage.setItem('recentVehicles', JSON.stringify(recent));
-    return recent;
+    try {
+      const recent = this.getRecentVehicles();
+      const filtered = recent.filter(v => 
+        !(v.brand === vehicle.brand && v.model === vehicle.model && 
+          v.year === vehicle.year && v.engineType === vehicle.engineType)
+      );
+      filtered.unshift(vehicle);
+      const limited = filtered.slice(0, 5);
+      localStorage.setItem('recentVehicles', JSON.stringify(limited));
+    } catch (error) {
+      console.error('Error saving recent vehicle:', error);
+    }
   }
 
   clearRecentVehicles() {
-    localStorage.removeItem('recentVehicles');
+    try {
+      localStorage.removeItem('recentVehicles');
+    } catch (error) {
+      console.error('Error clearing recent vehicles:', error);
+    }
   }
 }
 
