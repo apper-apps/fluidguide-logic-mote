@@ -4,7 +4,6 @@ class VehicleService {
   constructor() {
     this.apperClient = null;
   }
-
   initializeClient() {
     if (typeof window === 'undefined') {
       console.error('ApperClient can only be initialized in browser environment');
