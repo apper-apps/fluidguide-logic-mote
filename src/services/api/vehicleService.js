@@ -1,6 +1,9 @@
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
+import React from "react";
+import Error from "@/components/ui/Error";
 
 class VehicleService {
+  tableName = 'vehicle';
   constructor() {
     this.apperClient = null;
   }
@@ -38,14 +41,14 @@ class VehicleService {
     }
   }
 
-  async getBrands() {
+async getBrands() {
     try {
       if (!this.apperClient) this.initializeClient();
       
       if (!this.apperClient) {
         throw new Error('Failed to initialize ApperClient');
       }
-      
+
       const params = {
         fields: [
           { field: { Name: "brand" } }
@@ -55,24 +58,31 @@ class VehicleService {
           { fieldName: "brand", sorttype: "ASC" }
         ]
       };
-      
-      const response = await this.apperClient.fetchRecords('vehicle', params);
+
+      const response = await this.apperClient.fetchRecords(this.tableName, params);
       
       if (!response.success) {
-        console.error(response.message);
-        toast.error(response.message);
+        console.error('Failed to fetch brands:', response.message);
+        toast.error(response.message || 'Failed to load vehicle brands');
         return [];
       }
-      
-      const brands = [...new Set(response.data.map(v => v.brand))].sort();
-      return brands;
+
+      const brands = response.data?.map(item => item.brand).filter(Boolean) || [];
+      return [...new Set(brands)].sort();
     } catch (error) {
       console.error('Error fetching brands:', error);
-      toast.error('Failed to load brands');
+      
+      if (error.name === 'AxiosError' || error.message?.includes('Network Error')) {
+        toast.error('Network connection failed. Please check your internet connection and try again.');
+      } else {
+        toast.error('Failed to load vehicle brands. Please try again.');
+      }
+      
       return [];
     }
   }
 
+// Get models for a specific brand
   async getModels(brand) {
     try {
       if (!this.apperClient) this.initializeClient();
@@ -80,7 +90,7 @@ class VehicleService {
       if (!this.apperClient) {
         throw new Error('Failed to initialize ApperClient');
       }
-      
+
       const params = {
         fields: [
           { field: { Name: "model" } }
@@ -93,24 +103,31 @@ class VehicleService {
           { fieldName: "model", sorttype: "ASC" }
         ]
       };
-      
-      const response = await this.apperClient.fetchRecords('vehicle', params);
+
+      const response = await this.apperClient.fetchRecords(this.tableName, params);
       
       if (!response.success) {
-        console.error(response.message);
-        toast.error(response.message);
+        console.error('Failed to fetch models:', response.message);
+        toast.error(response.message || 'Failed to load vehicle models');
         return [];
       }
-      
-      const models = [...new Set(response.data.map(v => v.model))].sort();
-      return models;
+
+      const models = response.data?.map(item => item.model).filter(Boolean) || [];
+      return [...new Set(models)].sort();
     } catch (error) {
       console.error('Error fetching models:', error);
-      toast.error('Failed to load models');
+      
+      if (error.name === 'AxiosError' || error.message?.includes('Network Error')) {
+        toast.error('Network connection failed. Please check your internet connection and try again.');
+      } else {
+        toast.error('Failed to load vehicle models. Please try again.');
+      }
+      
       return [];
     }
   }
 
+// Get years for a specific brand and model
   async getYears(brand, model) {
     try {
       if (!this.apperClient) this.initializeClient();
@@ -132,24 +149,31 @@ class VehicleService {
           { fieldName: "year", sorttype: "DESC" }
         ]
       };
-      
-      const response = await this.apperClient.fetchRecords('vehicle', params);
+
+      const response = await this.apperClient.fetchRecords(this.tableName, params);
       
       if (!response.success) {
-        console.error(response.message);
-        toast.error(response.message);
+        console.error('Failed to fetch years:', response.message);
+        toast.error(response.message || 'Failed to load vehicle years');
         return [];
       }
-      
-      const years = [...new Set(response.data.map(v => v.year))].sort((a, b) => b - a);
-      return years;
+
+      const years = response.data?.map(item => item.year).filter(Boolean) || [];
+      return [...new Set(years)].sort((a, b) => b - a);
     } catch (error) {
       console.error('Error fetching years:', error);
-      toast.error('Failed to load years');
+      
+      if (error.name === 'AxiosError' || error.message?.includes('Network Error')) {
+        toast.error('Network connection failed. Please check your internet connection and try again.');
+      } else {
+        toast.error('Failed to load vehicle years. Please try again.');
+      }
+      
       return [];
     }
   }
 
+// Get engine types for a specific brand, model, and year
   async getEngineTypes(brand, model, year) {
     try {
       if (!this.apperClient) this.initializeClient();
@@ -172,24 +196,31 @@ class VehicleService {
           { fieldName: "engine_type", sorttype: "ASC" }
         ]
       };
-      
-      const response = await this.apperClient.fetchRecords('vehicle', params);
+
+      const response = await this.apperClient.fetchRecords(this.tableName, params);
       
       if (!response.success) {
-        console.error(response.message);
-        toast.error(response.message);
+        console.error('Failed to fetch engine types:', response.message);
+        toast.error(response.message || 'Failed to load engine types');
         return [];
       }
-      
-      const engineTypes = [...new Set(response.data.map(v => v.engine_type))].sort();
-      return engineTypes;
+
+      const engineTypes = response.data?.map(item => item.engine_type).filter(Boolean) || [];
+      return [...new Set(engineTypes)].sort();
     } catch (error) {
       console.error('Error fetching engine types:', error);
-      toast.error('Failed to load engine types');
+      
+      if (error.name === 'AxiosError' || error.message?.includes('Network Error')) {
+        toast.error('Network connection failed. Please check your internet connection and try again.');
+      } else {
+        toast.error('Failed to load engine types. Please try again.');
+      }
+      
       return [];
     }
   }
 
+// Get vehicles by specifications
   async getBySpecs(brand, model, year, engineType) {
     try {
       if (!this.apperClient) this.initializeClient();
@@ -198,6 +229,16 @@ class VehicleService {
         throw new Error('Failed to initialize ApperClient');
       }
       
+      const whereConditions = [
+        { FieldName: "brand", Operator: "EqualTo", Values: [brand] },
+        { FieldName: "model", Operator: "EqualTo", Values: [model] },
+        { FieldName: "year", Operator: "EqualTo", Values: [year] }
+      ];
+
+      if (engineType) {
+        whereConditions.push({ FieldName: "engine_type", Operator: "EqualTo", Values: [engineType] });
+      }
+
       const params = {
         fields: [
           { field: { Name: "Name" } },
@@ -207,30 +248,31 @@ class VehicleService {
           { field: { Name: "engine_type" } },
           { field: { Name: "engine_code" } }
         ],
-        where: [
-          { FieldName: "brand", Operator: "EqualTo", Values: [brand] },
-          { FieldName: "model", Operator: "EqualTo", Values: [model] },
-          { FieldName: "year", Operator: "EqualTo", Values: [year] },
-          { FieldName: "engine_type", Operator: "EqualTo", Values: [engineType] }
-        ]
+        where: whereConditions
       };
-      
-      const response = await this.apperClient.fetchRecords('vehicle', params);
+
+      const response = await this.apperClient.fetchRecords(this.tableName, params);
       
       if (!response.success) {
-        console.error(response.message);
-        toast.error(response.message);
-        return null;
+        console.error('Failed to fetch vehicles by specs:', response.message);
+        toast.error(response.message || 'Failed to load vehicles');
+        return [];
       }
-      
-      return response.data && response.data.length > 0 ? response.data[0] : null;
+
+      return response.data || [];
     } catch (error) {
-      console.error('Error fetching vehicle by specs:', error);
-      toast.error('Failed to load vehicle data');
-      return null;
+      console.error('Error fetching vehicles by specs:', error);
+      
+      if (error.name === 'AxiosError' || error.message?.includes('Network Error')) {
+        toast.error('Network connection failed. Please check your internet connection and try again.');
+      } else {
+        toast.error('Failed to load vehicles. Please try again.');
+      }
+return [];
     }
   }
 
+  // Get vehicle by ID
   async getById(id) {
     try {
       if (!this.apperClient) this.initializeClient();
@@ -249,29 +291,35 @@ class VehicleService {
           { field: { Name: "engine_code" } }
         ]
       };
-      
-      const response = await this.apperClient.getRecordById('vehicle', id, params);
+
+      const response = await this.apperClient.getRecordById(this.tableName, id, params);
       
       if (!response.success) {
-        console.error(response.message);
-        toast.error(response.message);
+        console.error('Failed to fetch vehicle by ID:', response.message);
+        toast.error(response.message || 'Failed to load vehicle details');
         return null;
       }
-      
-      return response.data || null;
+
+      return response.data;
     } catch (error) {
       console.error('Error fetching vehicle by ID:', error);
-      toast.error('Failed to load vehicle data');
+      
+      if (error.name === 'AxiosError' || error.message?.includes('Network Error')) {
+        toast.error('Network connection failed. Please check your internet connection and try again.');
+      } else {
+        toast.error('Failed to load vehicle details. Please try again.');
+      }
+      
       return null;
     }
   }
 
-  // Local storage methods for recent vehicles
+  // Recent vehicles localStorage management
   getRecentVehicles() {
     try {
-      const stored = localStorage.getItem('recentVehicles');
-      return stored ? JSON.parse(stored) : [];
-    } catch {
+      const recent = localStorage.getItem('recentVehicles');
+      return recent ? JSON.parse(recent) : [];
+} catch {
       return [];
     }
   }
