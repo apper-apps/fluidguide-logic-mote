@@ -1,0 +1,258 @@
+[
+  {
+    "Id": 1,
+    "brand": "Toyota",
+    "model": "Camry",
+    "year": 2023,
+    "engineType": "2.5L 4-Cylinder",
+    "engineCode": "A25A-FKS"
+  },
+  {
+    "Id": 2,
+    "brand": "Toyota",
+    "model": "Camry",
+    "year": 2023,
+    "engineType": "3.5L V6",
+    "engineCode": "2GR-FKS"
+  },
+  {
+    "Id": 3,
+    "brand": "Toyota",
+    "model": "Camry",
+    "year": 2022,
+    "engineType": "2.5L 4-Cylinder",
+    "engineCode": "A25A-FKS"
+  },
+  {
+    "Id": 4,
+    "brand": "Toyota",
+    "model": "Camry",
+    "year": 2022,
+    "engineType": "3.5L V6",
+    "engineCode": "2GR-FKS"
+  },
+  {
+    "Id": 5,
+    "brand": "Toyota",
+    "model": "Corolla",
+    "year": 2023,
+    "engineType": "2.0L 4-Cylinder",
+    "engineCode": "M20A-FKS"
+  },
+  {
+    "Id": 6,
+    "brand": "Toyota",
+    "model": "Corolla",
+    "year": 2022,
+    "engineType": "2.0L 4-Cylinder",
+    "engineCode": "M20A-FKS"
+  },
+  {
+    "Id": 7,
+    "brand": "Honda",
+    "model": "Civic",
+    "year": 2023,
+    "engineType": "2.0L 4-Cylinder",
+    "engineCode": "LFB3"
+  },
+  {
+    "Id": 8,
+    "brand": "Honda",
+    "model": "Civic",
+    "year": 2023,
+    "engineType": "1.5L Turbo",
+    "engineCode": "L15B7"
+  },
+  {
+    "Id": 9,
+    "brand": "Honda",
+    "model": "Civic",
+    "year": 2022,
+    "engineType": "2.0L 4-Cylinder",
+    "engineCode": "LFB3"
+  },
+  {
+    "Id": 10,
+    "brand": "Honda",
+    "model": "Civic",
+    "year": 2022,
+    "engineType": "1.5L Turbo",
+    "engineCode": "L15B7"
+  },
+  {
+    "Id": 11,
+    "brand": "Honda",
+    "model": "Accord",
+    "year": 2023,
+    "engineType": "1.5L Turbo",
+    "engineCode": "L15BE"
+  },
+  {
+    "Id": 12,
+    "brand": "Honda",
+    "model": "Accord",
+    "year": 2023,
+    "engineType": "2.0L Turbo",
+    "engineCode": "K20C4"
+  },
+  {
+    "Id": 13,
+    "brand": "Honda",
+    "model": "Accord",
+    "year": 2022,
+    "engineType": "1.5L Turbo",
+    "engineCode": "L15BE"
+  },
+  {
+    "Id": 14,
+    "brand": "Ford",
+    "model": "F-150",
+    "year": 2023,
+    "engineType": "3.3L V6",
+    "engineCode": "PFDI"
+  },
+  {
+    "Id": 15,
+    "brand": "Ford",
+    "model": "F-150",
+    "year": 2023,
+    "engineType": "2.7L EcoBoost V6",
+    "engineCode": "GTDI"
+  },
+  {
+    "Id": 16,
+    "brand": "Ford",
+    "model": "F-150",
+    "year": 2023,
+    "engineType": "5.0L V8",
+    "engineCode": "PFDI"
+  },
+  {
+    "Id": 17,
+    "brand": "Ford",
+    "model": "F-150",
+    "year": 2022,
+    "engineType": "3.3L V6",
+    "engineCode": "PFDI"
+  },
+  {
+    "Id": 18,
+    "brand": "Ford",
+    "model": "F-150",
+    "year": 2022,
+    "engineType": "2.7L EcoBoost V6",
+    "engineCode": "GTDI"
+  },
+  {
+    "Id": 19,
+    "brand": "Ford",
+    "model": "Mustang",
+    "year": 2023,
+    "engineType": "2.3L EcoBoost",
+    "engineCode": "GTDI"
+  },
+  {
+    "Id": 20,
+    "brand": "Ford",
+    "model": "Mustang",
+    "year": 2023,
+    "engineType": "5.0L V8",
+    "engineCode": "PFDI"
+  },
+  {
+    "Id": 21,
+    "brand": "Chevrolet",
+    "model": "Silverado",
+    "year": 2023,
+    "engineType": "2.7L Turbo",
+    "engineCode": "L3B"
+  },
+  {
+    "Id": 22,
+    "brand": "Chevrolet",
+    "model": "Silverado",
+    "year": 2023,
+    "engineType": "5.3L V8",
+    "engineCode": "L84"
+  },
+  {
+    "Id": 23,
+    "brand": "Chevrolet",
+    "model": "Silverado",
+    "year": 2023,
+    "engineType": "6.2L V8",
+    "engineCode": "L87"
+  },
+  {
+    "Id": 24,
+    "brand": "Chevrolet",
+    "model": "Malibu",
+    "year": 2023,
+    "engineType": "1.5L Turbo",
+    "engineCode": "LFV"
+  },
+  {
+    "Id": 25,
+    "brand": "Chevrolet",
+    "model": "Malibu",
+    "year": 2022,
+    "engineType": "1.5L Turbo",
+    "engineCode": "LFV"
+  },
+  {
+    "Id": 26,
+    "brand": "BMW",
+    "model": "3 Series",
+    "year": 2023,
+    "engineType": "2.0L Turbo",
+    "engineCode": "B48"
+  },
+  {
+    "Id": 27,
+    "brand": "BMW",
+    "model": "3 Series",
+    "year": 2023,
+    "engineType": "3.0L Turbo",
+    "engineCode": "B58"
+  },
+  {
+    "Id": 28,
+    "brand": "BMW",
+    "model": "X3",
+    "year": 2023,
+    "engineType": "2.0L Turbo",
+    "engineCode": "B48"
+  },
+  {
+    "Id": 29,
+    "brand": "BMW",
+    "model": "X3",
+    "year": 2023,
+    "engineType": "3.0L Turbo",
+    "engineCode": "B58"
+  },
+  {
+    "Id": 30,
+    "brand": "Mercedes-Benz",
+    "model": "C-Class",
+    "year": 2023,
+    "engineType": "2.0L Turbo",
+    "engineCode": "M254"
+  },
+  {
+    "Id": 31,
+    "brand": "Mercedes-Benz",
+    "model": "C-Class",
+    "year": 2022,
+    "engineType": "2.0L Turbo",
+    "engineCode": "M254"
+  },
+  {
+    "Id": 32,
+    "brand": "Mercedes-Benz",
+    "model": "GLC",
+    "year": 2023,
+    "engineType": "2.0L Turbo",
+    "engineCode": "M254"
+  }
+]

@@ -1,0 +1,310 @@
+[
+  {
+    "Id": 1,
+    "vehicleId": 1,
+    "type": "Engine Oil",
+    "specification": "0W-20 Full Synthetic",
+    "volume": "4.6 quarts (4.3 liters)",
+    "products": [
+      {
+        "Id": 1,
+        "name": "Toyota Genuine Motor Oil 0W-20",
+        "brand": "Toyota",
+        "imageUrl": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&h=200&fit=crop",
+        "purchaseUrl": "https://parts.toyota.com/motor-oil",
+        "priority": 1
+      },
+      {
+        "Id": 2,
+        "name": "Mobil 1 Advanced Full Synthetic 0W-20",
+        "brand": "Mobil 1",
+        "imageUrl": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&h=200&fit=crop",
+        "purchaseUrl": "https://mobiloil.com/products",
+        "priority": 2
+      },
+      {
+        "Id": 3,
+        "name": "Castrol GTX Full Synthetic 0W-20",
+        "brand": "Castrol",
+        "imageUrl": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&h=200&fit=crop",
+        "purchaseUrl": "https://castrol.com/products",
+        "priority": 3
+      }
+    ]
+  },
+  {
+    "Id": 2,
+    "vehicleId": 1,
+    "type": "Transmission Oil",
+    "specification": "Toyota WS ATF",
+    "volume": "3.2 quarts (3.0 liters)",
+    "products": [
+      {
+        "Id": 4,
+        "name": "Toyota Genuine ATF WS",
+        "brand": "Toyota",
+        "imageUrl": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&h=200&fit=crop",
+        "purchaseUrl": "https://parts.toyota.com/transmission-fluid",
+        "priority": 1
+      },
+      {
+        "Id": 5,
+        "name": "Valvoline MaxLife Multi-Vehicle ATF",
+        "brand": "Valvoline",
+        "imageUrl": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&h=200&fit=crop",
+        "purchaseUrl": "https://valvoline.com/products",
+        "priority": 2
+      }
+    ]
+  },
+  {
+    "Id": 3,
+    "vehicleId": 1,
+    "type": "Antifreeze Coolant",
+    "specification": "Toyota Long Life Coolant",
+    "volume": "6.4 quarts (6.1 liters)",
+    "products": [
+      {
+        "Id": 6,
+        "name": "Toyota Long Life Coolant",
+        "brand": "Toyota",
+        "imageUrl": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&h=200&fit=crop",
+        "purchaseUrl": "https://parts.toyota.com/coolant",
+        "priority": 1
+      },
+      {
+        "Id": 7,
+        "name": "Prestone Extended Life Antifreeze",
+        "brand": "Prestone",
+        "imageUrl": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&h=200&fit=crop",
+        "purchaseUrl": "https://prestone.com/products",
+        "priority": 2
+      }
+    ]
+  },
+  {
+    "Id": 4,
+    "vehicleId": 1,
+    "type": "Brake Fluid",
+    "specification": "DOT 3",
+    "volume": "0.7 quarts (0.66 liters)",
+    "products": [
+      {
+        "Id": 8,
+        "name": "Toyota Genuine Brake Fluid DOT 3",
+        "brand": "Toyota",
+        "imageUrl": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&h=200&fit=crop",
+        "purchaseUrl": "https://parts.toyota.com/brake-fluid",
+        "priority": 1
+      },
+      {
+        "Id": 9,
+        "name": "Castrol GT LMA Brake Fluid",
+        "brand": "Castrol",
+        "imageUrl": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&h=200&fit=crop",
+        "purchaseUrl": "https://castrol.com/brake-fluid",
+        "priority": 2
+      }
+    ]
+  },
+  {
+    "Id": 5,
+    "vehicleId": 1,
+    "type": "Power Steering Fluid",
+    "specification": "Dexron III ATF",
+    "volume": "0.9 quarts (0.85 liters)",
+    "products": [
+      {
+        "Id": 10,
+        "name": "Toyota Power Steering Fluid",
+        "brand": "Toyota",
+        "imageUrl": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&h=200&fit=crop",
+        "purchaseUrl": "https://parts.toyota.com/power-steering",
+        "priority": 1
+      },
+      {
+        "Id": 11,
+        "name": "Lucas Power Steering Fluid",
+        "brand": "Lucas",
+        "imageUrl": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&h=200&fit=crop",
+        "purchaseUrl": "https://lucasoil.com/products",
+        "priority": 2
+      }
+    ]
+  },
+  {
+    "Id": 6,
+    "vehicleId": 7,
+    "type": "Engine Oil",
+    "specification": "0W-20 Full Synthetic",
+    "volume": "4.4 quarts (4.2 liters)",
+    "products": [
+      {
+        "Id": 12,
+        "name": "Honda Genuine Motor Oil 0W-20",
+        "brand": "Honda",
+        "imageUrl": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&h=200&fit=crop",
+        "purchaseUrl": "https://parts.honda.com/motor-oil",
+        "priority": 1
+      },
+      {
+        "Id": 13,
+        "name": "Mobil 1 Advanced Full Synthetic 0W-20",
+        "brand": "Mobil 1",
+        "imageUrl": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&h=200&fit=crop",
+        "purchaseUrl": "https://mobiloil.com/products",
+        "priority": 2
+      }
+    ]
+  },
+  {
+    "Id": 7,
+    "vehicleId": 7,
+    "type": "Transmission Oil",
+    "specification": "Honda CVT Fluid",
+    "volume": "3.0 quarts (2.8 liters)",
+    "products": [
+      {
+        "Id": 14,
+        "name": "Honda CVT Fluid",
+        "brand": "Honda",
+        "imageUrl": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&h=200&fit=crop",
+        "purchaseUrl": "https://parts.honda.com/transmission-fluid",
+        "priority": 1
+      },
+      {
+        "Id": 15,
+        "name": "Idemitsu CVT Fluid",
+        "brand": "Idemitsu",
+        "imageUrl": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&h=200&fit=crop",
+        "purchaseUrl": "https://idemitsu.com/products",
+        "priority": 2
+      }
+    ]
+  },
+  {
+    "Id": 8,
+    "vehicleId": 7,
+    "type": "Antifreeze Coolant",
+    "specification": "Honda Type 2 Coolant",
+    "volume": "5.7 quarts (5.4 liters)",
+    "products": [
+      {
+        "Id": 16,
+        "name": "Honda Type 2 Coolant",
+        "brand": "Honda",
+        "imageUrl": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&h=200&fit=crop",
+        "purchaseUrl": "https://parts.honda.com/coolant",
+        "priority": 1
+      },
+      {
+        "Id": 17,
+        "name": "Prestone Honda/Acura Coolant",
+        "brand": "Prestone",
+        "imageUrl": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&h=200&fit=crop",
+        "purchaseUrl": "https://prestone.com/honda-coolant",
+        "priority": 2
+      }
+    ]
+  },
+  {
+    "Id": 9,
+    "vehicleId": 14,
+    "type": "Engine Oil",
+    "specification": "5W-30 Full Synthetic",
+    "volume": "6.0 quarts (5.7 liters)",
+    "products": [
+      {
+        "Id": 18,
+        "name": "Ford Motorcraft Full Synthetic 5W-30",
+        "brand": "Ford Motorcraft",
+        "imageUrl": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&h=200&fit=crop",
+        "purchaseUrl": "https://parts.ford.com/motor-oil",
+        "priority": 1
+      },
+      {
+        "Id": 19,
+        "name": "Mobil 1 Advanced Full Synthetic 5W-30",
+        "brand": "Mobil 1",
+        "imageUrl": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&h=200&fit=crop",
+        "purchaseUrl": "https://mobiloil.com/products",
+        "priority": 2
+      }
+    ]
+  },
+  {
+    "Id": 10,
+    "vehicleId": 14,
+    "type": "Transmission Oil",
+    "specification": "Mercon LV ATF",
+    "volume": "13.9 quarts (13.1 liters)",
+    "products": [
+      {
+        "Id": 20,
+        "name": "Ford Motorcraft Mercon LV ATF",
+        "brand": "Ford Motorcraft",
+        "imageUrl": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&h=200&fit=crop",
+        "purchaseUrl": "https://parts.ford.com/transmission-fluid",
+        "priority": 1
+      },
+      {
+        "Id": 21,
+        "name": "Valvoline Mercon LV ATF",
+        "brand": "Valvoline",
+        "imageUrl": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&h=200&fit=crop",
+        "purchaseUrl": "https://valvoline.com/mercon-lv",
+        "priority": 2
+      }
+    ]
+  },
+  {
+    "Id": 11,
+    "vehicleId": 14,
+    "type": "Differential Oil",
+    "specification": "75W-90 Synthetic Gear Oil",
+    "volume": "3.75 quarts (3.5 liters)",
+    "products": [
+      {
+        "Id": 22,
+        "name": "Ford Motorcraft SAE 75W-90",
+        "brand": "Ford Motorcraft",
+        "imageUrl": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&h=200&fit=crop",
+        "purchaseUrl": "https://parts.ford.com/differential-oil",
+        "priority": 1
+      },
+      {
+        "Id": 23,
+        "name": "Royal Purple Max Gear 75W-90",
+        "brand": "Royal Purple",
+        "imageUrl": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&h=200&fit=crop",
+        "purchaseUrl": "https://royalpurple.com/gear-oil",
+        "priority": 2
+      }
+    ]
+  },
+  {
+    "Id": 12,
+    "vehicleId": 14,
+    "type": "Transfer Case Oil",
+    "specification": "Mercon ATF",
+    "volume": "1.4 quarts (1.3 liters)",
+    "products": [
+      {
+        "Id": 24,
+        "name": "Ford Motorcraft Mercon ATF",
+        "brand": "Ford Motorcraft",
+        "imageUrl": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&h=200&fit=crop",
+        "purchaseUrl": "https://parts.ford.com/transfer-case-oil",
+        "priority": 1
+      },
+      {
+        "Id": 25,
+        "name": "Castrol Transmax ATF",
+        "brand": "Castrol",
+        "imageUrl": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&h=200&fit=crop",
+        "purchaseUrl": "https://castrol.com/transmax",
+        "priority": 2
+      }
+    ]
+  }
+]
