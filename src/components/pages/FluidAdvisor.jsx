@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { toast } from "react-toastify";
+import { Car, Filter, Info, Search, Settings } from "lucide-react";
 import VehicleSelector from "@/components/organisms/VehicleSelector";
 import FluidResults from "@/components/organisms/FluidResults";
 import SearchBar from "@/components/molecules/SearchBar";
-import Icon from "@/components/atoms/Icon";
-import { vehicleService } from "@/services/api/vehicleService";
+import vehicleData from "@/services/mockData/vehicles.json";
+import fluidData from "@/services/mockData/fluids.json";
 import { fluidService } from "@/services/api/fluidService";
-
+import { vehicleService } from "@/services/api/vehicleService";
 const FluidAdvisor = () => {
   const [selectedVehicle, setSelectedVehicle] = useState(null);
   const [fluids, setFluids] = useState([]);
@@ -133,35 +134,33 @@ vehicleService.addRecentVehicle(vehicle);
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4 }}
         className="grid md:grid-cols-3 gap-6"
-      >
+>
         <div className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-xl p-6 text-center">
-<div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mx-auto mb-4">
-          <motion.div whileHover={{ rotate: 360 }} transition={{ duration: 0.5 }}>
-            <Icon name="Shield" className="w-6 h-6 text-white" />
-          </motion.div>
+          <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mx-auto mb-4">
+            <motion.div whileHover={{ rotate: 360 }} transition={{ duration: 0.5 }}>
+              <Settings className="w-6 h-6 text-white" />
+            </motion.div>
+          </div>
+          <h3 className="text-lg font-semibold text-gray-800 mb-2">Professional Data</h3>
+          <p className="text-gray-600 text-sm">Accurate specifications from automotive manufacturers</p>
         </div>
-        <h3 className="text-lg font-semibold text-gray-800 mb-2">Professional Data</h3>
-        <p className="text-gray-600 text-sm">Accurate specifications from automotive manufacturers</p>
+<div className="bg-gradient-to-br from-success/10 to-info/10 rounded-xl p-6 text-center">
+          <div className="w-12 h-12 bg-success rounded-xl flex items-center justify-center mx-auto mb-4">
+            <motion.div whileHover={{ scale: 1.1 }} transition={{ duration: 0.3 }}>
+              <Search className="w-6 h-6 text-white" />
+            </motion.div>
+          </div>
+          <h3 className="text-lg font-semibold text-gray-800 mb-2">Direct Purchase</h3>
+          <p className="text-gray-600 text-sm">Links to trusted automotive parts suppliers</p>
         </div>
-
-        <div className="bg-gradient-to-br from-success/10 to-info/10 rounded-xl p-6 text-center">
-<div className="w-12 h-12 bg-success rounded-xl flex items-center justify-center mx-auto mb-4">
-          <motion.div whileHover={{ scale: 1.1 }} transition={{ duration: 0.3 }}>
-            <Icon name="ShoppingCart" className="w-6 h-6 text-white" />
-          </motion.div>
-        </div>
-        <h3 className="text-lg font-semibold text-gray-800 mb-2">Direct Purchase</h3>
-        <p className="text-gray-600 text-sm">Links to trusted automotive parts suppliers</p>
-        </div>
-
-        <div className="bg-gradient-to-br from-warning/10 to-error/10 rounded-xl p-6 text-center">
-<div className="w-12 h-12 bg-warning rounded-xl flex items-center justify-center mx-auto mb-4">
-          <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.3 }}>
-            <Icon name="Clock" className="w-6 h-6 text-white" />
-          </motion.div>
-        </div>
-        <h3 className="text-lg font-semibold text-gray-800 mb-2">Quick Access</h3>
-        <p className="text-gray-600 text-sm">Recently viewed vehicles for easy reference</p>
+<div className="bg-gradient-to-br from-warning/10 to-error/10 rounded-xl p-6 text-center">
+          <div className="w-12 h-12 bg-warning rounded-xl flex items-center justify-center mx-auto mb-4">
+            <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.3 }}>
+              <Info className="w-6 h-6 text-white" />
+            </motion.div>
+          </div>
+          <h3 className="text-lg font-semibold text-gray-800 mb-2">Quick Access</h3>
+          <p className="text-gray-600 text-sm">Recently viewed vehicles for easy reference</p>
         </div>
       </motion.div>
     </div>
