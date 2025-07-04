@@ -14,11 +14,11 @@ export default {
         success: '#10b981',
         warning: '#f59e0b',
         error: '#ef4444',
-        info: '#3b82f6',
+info: '#3b82f6',
       },
       fontFamily: {
-        'display': ['Bebas Neue', 'cursive'],
-        'body': ['Inter', 'system-ui', 'sans-serif'],
+        'display': ['Arial', 'sans-serif'],
+        'body': ['Arial', 'system-ui', 'sans-serif'],
       },
       animation: {
         'shimmer': 'shimmer 2s linear infinite',
